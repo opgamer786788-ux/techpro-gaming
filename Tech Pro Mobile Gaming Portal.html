@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Pro | Free Fire MAX & Gaming Esports Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Configuration for Custom Theme Colors -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#FFB800',
+                            amber: '#FF8A00',
+                            darkBg: '#0B0E14',
+                            cardBg: '#151922',
+                            border: '#2A303F',
+                            neonCyan: '#00F0FF',
+                            neonPink: '#FF0055'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Gaming Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0E14;
+            color: #E2E8F0;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Glowing & Metallic Accent Styling */
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(255, 184, 0, 0.35);
+        }
+        .gold-text-glow {
+            text-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+        }
+        .neon-cyan-glow {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+        .clip-slant {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0E14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A303F;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFB800;
+        }
+    </style>
+</head>
+<body class="bg-brand-darkBg text-gray-200 antialiased selection:bg-brand-gold selection:text-black">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER & NAVIGATION SECTION             -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-50 bg-brand-darkBg/90 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo Placeholder (Tech Pro) -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-gradient-to-tr from-brand-amber via-brand-gold to-yellow-300 rounded-xl flex items-center justify-center font-black text-black text-2xl shadow-lg group-hover:scale-105 transition-transform gold-glow">
+                    TP
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-wider text-white flex items-center gap-1 font-mono">
+                        TECH<span class="text-brand-gold gold-text-glow">PRO</span>
+                    </span>
+                    <span class="text-[10px] tracking-widest text-brand-neonCyan uppercase font-semibold block -mt-1">
+                        Esports & Gaming
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <a href="#hero" class="text-white hover:text-brand-gold transition-colors flex items-center gap-2">
+                    <i class="fa-solid font-xs fa-fire text-brand-gold"></i> Strategy
+                </a>
+                <a href="#guild" class="text-gray-300 hover:text-brand-gold transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-users text-brand-neonCyan"></i> Guild Join
+                </a>
+                <a href="#redeem" class="text-gray-300 hover:text-brand-gold transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-gift text-brand-neonPink"></i> Redeem Center
+                </a>
+                <a href="#blog" class="text-gray-300 hover:text-brand-gold transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-brand-gold"></i> Guides & Tips
+                </a>
+            </nav>
+
+            <!-- Quick Action Button / Mobile Menu Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#redeem" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider text-black bg-brand-gold rounded-lg hover:bg-yellow-400 transition-all gold-glow">
+                    <i class="fa-solid fa-key mr-2"></i> Codes
+                </a>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg bg-brand-cardBg border border-brand-border">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-cardBg border-b border-brand-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-white hover:bg-brand-border hover:text-brand-gold">
+                <i class="fa-solid fa-fire text-brand-gold mr-2"></i> Strategy Hub
+            </a>
+            <a href="#guild" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-brand-border hover:text-brand-gold">
+                <i class="fa-solid fa-users text-brand-neonCyan mr-2"></i> Guild Recruitment
+            </a>
+            <a href="#redeem" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-brand-border hover:text-brand-gold">
+                <i class="fa-solid fa-gift text-brand-neonPink mr-2"></i> Code Redeem Center
+            </a>
+            <a href="#blog" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:bg-brand-border hover:text-brand-gold">
+                <i class="fa-solid fa-book-open text-brand-gold mr-2"></i> Tips & Guides
+            </a>
+        </div>
+    </header>
+
+    <main class="space-y-16 pb-20">
+
+        <!-- ========================================== -->
+        <!-- 2. HERO BANNER & NEWS CAROUSEL SECTION     -->
+        <!-- ========================================== -->
+        <section id="hero" class="relative pt-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="relative rounded-3xl overflow-hidden border border-brand-border bg-gradient-to-r from-brand-cardBg via-gray-900 to-black p-6 sm:p-10 lg:p-12 shadow-2xl">
+                <!-- Background Glow Graphic Effect -->
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-brand-neonCyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <!-- Text Content -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-bold tracking-wide">
+                            <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+                            FREE FIRE MAX SEASON UPDATE
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-tight">
+                            Dominate The <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-amber to-yellow-200 gold-text-glow">Battle Royale</span>
+                        </h1>
+                        
+                        <p class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+                            Elevate your gameplay with exclusive Battle Royale rank push techniques, Clash Squad meta tactics, and official Guild recruitment news.
+                        </p>
+
+                        <!-- Dynamic News Cards Switcher -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+                            <button onclick="switchHeroNews(0)" id="news-tab-0" class="hero-tab active text-left p-3 rounded-xl bg-brand-border/60 border border-brand-gold text-white transition-all">
+                                <span class="text-[10px] uppercase font-bold text-brand-gold block">Rank Push</span>
+                                <span class="text-xs font-semibold line-clamp-1">Grandmaster Path</span>
+                            </button>
+                            <button onclick="switchHeroNews(1)" id="news-tab-1" class="hero-tab text-left p-3 rounded-xl bg-brand-darkBg/60 border border-brand-border text-gray-400 hover:border-gray-500 transition-all">
+                                <span class="text-[10px] uppercase font-bold text-brand-neonCyan block">Clash Squad</span>
+                                <span class="text-xs font-semibold line-clamp-1">Meta Squad Comps</span>
+                            </button>
+                            <button onclick="switchHeroNews(2)" id="news-tab-2" class="hero-tab text-left p-3 rounded-xl bg-brand-darkBg/60 border border-brand-border text-gray-400 hover:border-gray-500 transition-all">
+                                <span class="text-[10px] uppercase font-bold text-brand-neonPink block">Tournament</span>
+                                <span class="text-xs font-semibold line-clamp-1">Esports Tryouts</span>
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Content Panel -->
+                        <div id="hero-news-content" class="p-4 rounded-xl bg-brand-darkBg/80 border border-brand-border text-sm text-gray-300 flex items-start gap-4">
+                            <i id="hero-news-icon" class="fa-solid fa-trophy text-brand-gold text-2xl mt-1"></i>
+                            <div>
+                                <h4 id="hero-news-title" class="font-bold text-white text-base">Grandmaster Rank Push Strategy 2026</h4>
+                                <p id="hero-news-desc" class="text-xs text-gray-400 mt-1">
+                                    Learn optimal safe zone rotations, land selection in Bermuda MAX, and survival vs kill points balancing for steady RP gains.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="#guild" class="px-6 py-3 rounded-xl bg-brand-gold text-black font-extrabold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all gold-glow flex items-center gap-2">
+                                <i class="fa-solid fa-user-plus"></i> Join Tech Pro Guild
+                            </a>
+                            <a href="#blog" class="px-6 py-3 rounded-xl bg-brand-cardBg border border-brand-border text-white font-bold text-sm uppercase tracking-wider hover:bg-brand-border transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-compass"></i> Explore Guides
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Visual Graphic Placeholder / Hero Card -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        <div class="w-full max-w-sm rounded-2xl bg-gradient-to-b from-brand-border to-brand-cardBg p-1 border border-brand-gold/40 shadow-2xl">
+                            <div class="bg-brand-darkBg p-5 rounded-xl text-center space-y-4">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-brand-amber to-brand-gold flex items-center justify-center text-black text-4xl shadow-inner gold-glow">
+                                    <i class="fa-solid fa-crosshair"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-black text-white uppercase tracking-wider">Tech Pro eSports</h3>
+                                    <p class="text-xs text-brand-gold font-semibold">Official FF MAX Competitive Squad</p>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 py-3 border-y border-brand-border text-center">
+                                    <div>
+                                        <p class="text-xs text-gray-400">Guild Level</p>
+                                        <p class="font-bold text-white text-base">LVL 6</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400">Glory Points</p>
+                                        <p class="font-bold text-brand-gold text-base">480K+</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400">Global Rank</p>
+                                        <p class="font-bold text-brand-neonCyan text-base">#42</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-xs text-gray-400 px-2">
+                                    <span><i class="fa-solid fa-circle text-emerald-500 text-[10px] mr-1"></i> Active Roster</span>
+                                    <span>Guild ID: <strong class="text-white font-mono">30948512</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. INTERACTIVE GUILD RECRUITMENT FORM     -->
+        <!-- ========================================== -->
+        <section id="guild" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Left Details Banner -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-brand-cardBg to-brand-darkBg p-8 rounded-3xl border border-brand-border flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-xl bg-brand-neonCyan/10 border border-brand-neonCyan/40 flex items-center justify-center text-brand-neonCyan text-xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl font-black text-white uppercase tracking-wide">
+                                Join Guild <span class="text-brand-gold">Tech Pro</span>
+                            </h2>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                                Are you an active Free Fire MAX player looking for tournament custom rooms, weekly glory rewards, and Grandmaster push teammates? Apply now!
+                            </p>
+                        </div>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-brand-border flex items-center justify-center text-brand-gold shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-bold text-white">Weekly Room Cards</h5>
+                                    <p class="text-xs text-gray-400">Guaranteed Friday 1800 glory score completed weekly.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-brand-border flex items-center justify-center text-brand-neonCyan shrink-0">
+                                    <i class="fa-solid fa-headset"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-bold text-white">Discord Voice & Esports</h5>
+                                    <p class="text-xs text-gray-400">Coordinated voice comms and scrims tournament entries.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-brand-border flex items-center justify-center text-brand-neonPink shrink-0">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-bold text-white">Requirements</h5>
+                                    <p class="text-xs text-gray-400">Heroic / Grandmaster Rank, Level 60+, and active daily gameplay.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-brand-border flex items-center justify-between text-xs text-gray-400">
+                        <span>Recruitment Status:</span>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold uppercase tracking-wider">
+                            ● OPEN (3 Slots Left)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right Form Box -->
+                <div class="lg:col-span-7 bg-brand-cardBg p-6 sm:p-8 rounded-3xl border border-brand-border flex flex-col justify-center">
+                    <form id="guild-form" onsubmit="handleGuildSubmit(event)" class="space-y-5">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-id-card text-brand-gold"></i> Recruitment Application
+                        </h3>
+                        <p class="text-xs text-gray-400">Fill in your exact in-game details. Our officers will send an in-game request.</p>
+
+                        <!-- Player Name Input -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2" for="player-name">
+                                Player Name (In-Game IGN)
+                            </label>
+                            <input type="text" id="player-name" required placeholder="e.g. OP_LEGEND_99" 
+                                class="w-full bg-brand-darkBg border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-600">
+                        </div>
+
+                        <!-- Free Fire UID & Rank Level Row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2" for="player-uid">
+                                    Free Fire UID Number
+                                </label>
+                                <input type="number" id="player-uid" required placeholder="e.g. 1029384756" 
+                                    class="w-full bg-brand-darkBg border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold transition-colors placeholder-gray-600">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2" for="player-rank">
+                                    Current Rank Level
+                                </label>
+                                <select id="player-rank" required class="w-full bg-brand-darkBg border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold transition-colors">
+                                    <option value="" disabled selected>Select Your Rank</option>
+                                    <option value="Grandmaster">Grandmaster</option>
+                                    <option value="Heroic">Heroic (Star 1-50)</option>
+                                    <option value="Master">Master Tier</option>
+                                    <option value="Diamond">Diamond IV</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Preferred Role Dropdown -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2" for="player-role">
+                                Preferred Squad Role
+                            </label>
+                            <select id="player-role" required class="w-full bg-brand-darkBg border border-brand-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold transition-colors">
+                                <option value="" disabled selected>Select In-Game Role</option>
+                                <option value="Sniper Specialist">Sniper Specialist (AWM / M82B)</option>
+                                <option value="Rusher / Fragger">Rusher / Fragger (MP40 / Shotgun)</option>
+                                <option value="In-Game Leader (IGL)">In-Game Leader (IGL / Strategist)</option>
+                                <option value="Support / Healer">Support / Medic (Dimitri / K Skill)</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-brand-amber via-brand-gold to-yellow-400 text-black font-black uppercase tracking-wider text-sm hover:opacity-90 transition-opacity gold-glow flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Application
+                        </button>
+                    </form>
+
+                    <!-- Success Message Box -->
+                    <div id="guild-success-msg" class="hidden p-6 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 text-center space-y-3">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">Application Received!</h4>
+                        <p class="text-xs text-gray-300">
+                            Thank you <span id="res-player-name" class="font-bold text-brand-gold"></span>! Your application for role <span id="res-player-role" class="text-emerald-400"></span> has been logged. Our Guild leader will verify UID <span id="res-player-uid" class="font-mono text-white"></span> shortly.
+                        </p>
+                        <button onclick="resetGuildForm()" class="mt-2 text-xs text-brand-gold hover:underline font-bold">
+                            Submit Another Entry
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 4. CODE / REDEEM CENTER SIMULATOR         -->
+        <!-- ========================================== -->
+        <section id="redeem" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-gray-900 via-brand-cardBg to-gray-900 rounded-3xl border border-brand-border p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                <div class="max-w-3xl mx-auto text-center space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-neonPink/10 border border-brand-neonPink/30 text-brand-neonPink text-xs font-bold uppercase">
+                        <i class="fa-solid fa-fire"></i> Rewards Center
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
+                        Free Fire MAX <span class="text-brand-gold">Redeem Code Vault</span>
+                    </h2>
+                    <p class="text-gray-400 text-xs sm:text-sm">
+                        Enter active 12-character promotional redeem codes below to test code validity and claim simulated rewards directly into your vault balance!
+                    </p>
+
+                    <!-- Code Input & Submit Area -->
+                    <div class="pt-4 max-w-xl mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="text" id="redeem-code-input" uppercase placeholder="Enter 12-digit code (e.g. FFMAX2026GOLD)" 
+                                class="flex-grow bg-brand-darkBg border border-brand-border rounded-xl px-4 py-3 text-white text-center sm:text-left font-mono tracking-widest uppercase focus:outline-none focus:border-brand-gold transition-colors">
+                            <button onclick="redeemCode()" class="px-6 py-3 rounded-xl bg-brand-neonPink text-white font-extrabold text-sm uppercase tracking-wider hover:bg-pink-600 transition-all shrink-0">
+                                <i class="fa-solid fa-gift mr-1"></i> Redeem Now
+                            </button>
+                        </div>
+                        <p id="redeem-status-msg" class="text-xs font-medium mt-3 hidden"></p>
+                    </div>
+
+                    <!-- Available Sample Codes List for User Testing -->
+                    <div class="pt-6 border-t border-brand-border mt-8">
+                        <p class="text-xs text-gray-400 font-semibold mb-3 uppercase tracking-wider">
+                            Try these test codes (Click to copy):
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <button onclick="useSampleCode('FFMAX2026GOLD')" class="px-3 py-1.5 rounded-lg bg-brand-darkBg border border-brand-border hover:border-brand-gold text-brand-gold font-mono text-xs transition-colors">
+                                FFMAX2026GOLD
+                            </button>
+                            <button onclick="useSampleCode('BOOYAH99GLORY')" class="px-3 py-1.5 rounded-lg bg-brand-darkBg border border-brand-border hover:border-brand-gold text-brand-gold font-mono text-xs transition-colors">
+                                BOOYAH99GLORY
+                            </button>
+                            <button onclick="useSampleCode('SKIN34ROOMCARD')" class="px-3 py-1.5 rounded-lg bg-brand-darkBg border border-brand-border hover:border-brand-gold text-brand-gold font-mono text-xs transition-colors">
+                                SKIN34ROOMCARD
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Earned Rewards Inventory Simulation -->
+                    <div class="mt-8 pt-6 border-t border-brand-border text-left">
+                        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center justify-between">
+                            <span><i class="fa-solid fa-vault text-brand-gold mr-2"></i> Claimed Rewards Vault</span>
+                            <span id="vault-count" class="text-xs bg-brand-gold/20 text-brand-gold px-2 py-0.5 rounded font-mono">0 Items</span>
+                        </h4>
+                        <div id="rewards-vault-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="p-4 rounded-xl bg-brand-darkBg/50 border border-dashed border-brand-border text-center text-gray-500 text-xs py-8 sm:col-span-3">
+                                No rewards claimed yet. Redeem a code above to fill your vault!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 5. GAMING BLOG & TIPS SECTION              -->
+        <!-- ========================================== -->
+        <section id="blog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-8">
+                <!-- Section Title Header -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-brand-border pb-5">
+                    <div>
+                        <span class="text-xs font-bold text-brand-gold uppercase tracking-widest block mb-1">PRO GUIDE & TACTICS</span>
+                        <h2 class="text-3xl font-black text-white uppercase tracking-tight">
+                            Gaming Guides & <span class="text-brand-neonCyan">Pro Tips</span>
+                        </h2>
+                    </div>
+                    <p class="text-xs text-gray-400 max-w-xs">
+                        Master your custom HUD layout, headshot sensitivity settings, and high-kill rank push tactics.
+                    </p>
+                </div>
+
+                <!-- Articles Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Article Card 1 -->
+                    <article class="bg-brand-cardBg rounded-2xl border border-brand-border overflow-hidden hover:border-brand-gold/50 transition-all flex flex-col">
+                        <div class="h-44 bg-gradient-to-tr from-yellow-950 via-gray-900 to-black p-6 flex flex-col justify-between relative">
+                            <span class="self-start px-2.5 py-1 rounded-md bg-brand-gold text-black text-[10px] font-black uppercase tracking-wider">
+                                Controls & Sensitivity
+                            </span>
+                            <i class="fa-solid fa-sliders text-5xl text-brand-gold/20 absolute right-4 bottom-4"></i>
+                            <h3 class="text-lg font-bold text-white relative z-10">Best Free Fire MAX Sensitivity & HUD for 2026</h3>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                Optimal headshot DPI and sensitivity settings: General 98, Red Dot 95, 2x Scope 90. Perfect 3-Finger and 4-Finger custom HUD layout guides.
+                            </p>
+                            <div class="flex items-center justify-between text-[11px] text-gray-500 pt-3 border-t border-brand-border">
+                                <span><i class="fa-regular fa-clock mr-1"></i> 4 min read</span>
+                                <button onclick="openBlogModal(1)" class="text-brand-gold font-bold hover:underline">Read Guide →</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article Card 2 -->
+                    <article class="bg-brand-cardBg rounded-2xl border border-brand-border overflow-hidden hover:border-brand-neonCyan/50 transition-all flex flex-col">
+                        <div class="h-44 bg-gradient-to-tr from-cyan-950 via-gray-900 to-black p-6 flex flex-col justify-between relative">
+                            <span class="self-start px-2.5 py-1 rounded-md bg-brand-neonCyan text-black text-[10px] font-black uppercase tracking-wider">
+                                Rank Push Guide
+                            </span>
+                            <i class="fa-solid fa-skull-crossbones text-5xl text-brand-neonCyan/20 absolute right-4 bottom-4"></i>
+                            <h3 class="text-lg font-bold text-white relative z-10">9-Kill Solo vs Squad Rank Push Secrets</h3>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                High-kill strategies to reach Grandmaster quickly. How to loot early zones safely, execute third-party fights, and win late-game 1v1 situations.
+                            </p>
+                            <div class="flex items-center justify-between text-[11px] text-gray-500 pt-3 border-t border-brand-border">
+                                <span><i class="fa-regular fa-clock mr-1"></i> 6 min read</span>
+                                <button onclick="openBlogModal(2)" class="text-brand-neonCyan font-bold hover:underline">Read Guide →</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article Card 3 -->
+                    <article class="bg-brand-cardBg rounded-2xl border border-brand-border overflow-hidden hover:border-brand-neonPink/50 transition-all flex flex-col">
+                        <div class="h-44 bg-gradient-to-tr from-pink-950 via-gray-900 to-black p-6 flex flex-col justify-between relative">
+                            <span class="self-start px-2.5 py-1 rounded-md bg-brand-neonPink text-white text-[10px] font-black uppercase tracking-wider">
+                                Character Combination
+                            </span>
+                            <i class="fa-solid fa-bolt text-5xl text-brand-neonPink/20 absolute right-4 bottom-4"></i>
+                            <h3 class="text-lg font-bold text-white relative z-10">Top 3 Active Character Combos for Rush Players</h3>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                Combine Tatsuya / Alok with Hayato, Kelly, and Sonia for maximum movement speed, armor penetration, and instant revive capability.
+                            </p>
+                            <div class="flex items-center justify-between text-[11px] text-gray-500 pt-3 border-t border-brand-border">
+                                <span><i class="fa-regular fa-clock mr-1"></i> 5 min read</span>
+                                <button onclick="openBlogModal(3)" class="text-brand-neonPink font-bold hover:underline">Read Guide →</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- BLOG MODAL POPUP                           -->
+    <!-- ========================================== -->
+    <div id="blog-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-brand-cardBg border border-brand-border w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
+            <div class="p-6 border-b border-brand-border flex items-center justify-between">
+                <h3 id="modal-title" class="text-xl font-black text-white uppercase">Article Title</h3>
+                <button onclick="closeBlogModal()" class="text-gray-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="modal-body" class="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-gray-300 leading-relaxed">
+                <!-- Content injected dynamically -->
+            </div>
+            <div class="p-4 border-t border-brand-border bg-brand-darkBg flex justify-end">
+                <button onclick="closeBlogModal()" class="px-5 py-2 rounded-xl bg-brand-gold text-black font-bold text-xs">
+                    Close Guide
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 6. FOOTER SECTION                          -->
+    <!-- ========================================== -->
+    <footer class="bg-brand-darkBg border-t border-brand-border py-10 px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-12 gap-8 items-center">
+            <div class="sm:col-span-6 space-y-2">
+                <div class="flex items-center justify-center sm:justify-start gap-2">
+                    <div class="w-7 h-7 bg-brand-gold rounded-lg flex items-center justify-center font-bold text-black text-xs">TP</div>
+                    <span class="text-lg font-black text-white tracking-wider">TECH PRO GAMING</span>
+                </div>
+                <p class="text-xs text-gray-500">
+                    Your ultimate destination for Free Fire MAX tips, Grandmaster strategies, and active esports tournament recruitment.
+                </p>
+            </div>
+            <div class="sm:col-span-6 flex justify-center sm:justify-end gap-6 text-gray-400 text-lg">
+                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="hover:text-brand-neonCyan transition-colors"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" class="hover:text-brand-neonPink transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-brand-border/40 text-center text-xs text-gray-600">
+            © 2026 Tech Pro Mobile Gaming. Designed for Mobile & Desktop.
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT LOGIC                           -->
+    <!-- ========================================== -->
+    <script>
+        // 1. Mobile Navigation Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Hero News Carousel Switcher
+        const newsData = [
+            {
+                title: "Grandmaster Rank Push Strategy 2026",
+                desc: "Learn optimal safe zone rotations, land selection in Bermuda MAX, and survival vs kill points balancing for steady RP gains.",
+                icon: "fa-solid fa-trophy",
+                color: "text-brand-gold"
+            },
+            {
+                title: "Clash Squad Meta Squad Comps & Skill Combinations",
+                desc: "Master 4v4 round economy, fast rush strategies with Tatsuya, and defensive Gloo Wall traps for maximum win streaks.",
+                icon: "fa-solid fa-shield-cat",
+                color: "text-brand-neonCyan"
+            },
+            {
+                title: "Esports Scrims & Tournament Recruitment Tryouts",
+                desc: "Tech Pro is opening slots for official custom tournament rooms. Prove your K/D ratio and team comms in weekly trials.",
+                icon: "fa-solid fa-gamepad",
+                color: "text-brand-neonPink"
+            }
+        ];
+
+        function switchHeroNews(index) {
+            // Update tabs UI
+            for (let i = 0; i < 3; i++) {
+                const tab = document.getElementById(`news-tab-${i}`);
+                if (i === index) {
+                    tab.classList.add('bg-brand-border/60', 'border-brand-gold', 'text-white');
+                    tab.classList.remove('bg-brand-darkBg/60', 'border-brand-border', 'text-gray-400');
+                } else {
+                    tab.classList.remove('bg-brand-border/60', 'border-brand-gold', 'text-white');
+                    tab.classList.add('bg-brand-darkBg/60', 'border-brand-border', 'text-gray-400');
+                }
+            }
+
+            // Update content
+            const data = newsData[index];
+            document.getElementById('hero-news-title').innerText = data.title;
+            document.getElementById('hero-news-desc').innerText = data.desc;
+            const iconElem = document.getElementById('hero-news-icon');
+            iconElem.className = `${data.icon} ${data.color} text-2xl mt-1`;
+        }
+
+        // 3. Guild Recruitment Form Handler
+        function handleGuildSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('player-name').value;
+            const uid = document.getElementById('player-uid').value;
+            const rank = document.getElementById('player-rank').value;
+            const role = document.getElementById('player-role').value;
+
+            // Fill Response Text
+            document.getElementById('res-player-name').innerText = name;
+            document.getElementById('res-player-uid').innerText = uid;
+            document.getElementById('res-player-role').innerText = role;
+
+            // Toggle form views
+            document.getElementById('guild-form').classList.add('hidden');
+            document.getElementById('guild-success-msg').classList.remove('hidden');
+        }
+
+        function resetGuildForm() {
+            document.getElementById('guild-form').reset();
+            document.getElementById('guild-form').classList.remove('hidden');
+            document.getElementById('guild-success-msg').classList.add('hidden');
+        }
+
+        // 4. Code / Redeem Center Simulation
+        const validCodes = {
+            'FFMAX2026GOLD': { name: '5,000 Gold Coins + Weapon Royale Voucher', icon: 'fa-coins', color: 'text-brand-gold' },
+            'BOOYAH99GLORY': { name: 'Booyah Exclusive Room Card (1-Day)', icon: 'fa-ticket', color: 'text-brand-neonCyan' },
+            'SKIN34ROOMCARD': { name: 'Crimson Dragon Gun Skin (7-Day Trial)', icon: 'fa-gun', color: 'text-brand-neonPink' }
+        };
+
+        let claimedCodes = [];
+
+        function useSampleCode(code) {
+            document.getElementById('redeem-code-input').value = code;
+        }
+
+        function redeemCode() {
+            const inputElem = document.getElementById('redeem-code-input');
+            const statusMsg = document.getElementById('redeem-status-msg');
+            const code = inputElem.value.trim().toUpperCase();
+
+            statusMsg.classList.remove('hidden', 'text-emerald-400', 'text-rose-500');
+
+            if (!code) {
+                statusMsg.innerText = "Please enter a redeem code first!";
+                statusMsg.classList.add('text-rose-500');
+                return;
+            }
+
+            if (claimedCodes.includes(code)) {
+                statusMsg.innerText = "You have already redeemed this code!";
+                statusMsg.classList.add('text-rose-500');
+                return;
+            }
+
+            if (validCodes[code]) {
+                claimedCodes.push(code);
+                const item = validCodes[code];
+
+                statusMsg.innerText = `SUCCESS! You earned: ${item.name}`;
+                statusMsg.classList.add('text-emerald-400');
+
+                // Render in Vault
+                renderVaultItem(item);
+                inputElem.value = "";
+            } else {
+                statusMsg.innerText = "Invalid or expired redeem code. Please check and try again!";
+                statusMsg.classList.add('text-rose-500');
+            }
+        }
+
+        function renderVaultItem(item) {
+            const grid = document.getElementById('rewards-vault-grid');
+            const countElem = document.getElementById('vault-count');
+
+            // Remove placeholder on first item
+            if (claimedCodes.length === 1) {
+                grid.innerHTML = "";
+            }
+
+            countElem.innerText = `${claimedCodes.length} Item(s)`;
+
+            const cardHtml = `
+                <div class="p-3.5 rounded-xl bg-brand-darkBg border border-brand-border flex items-center gap-3 animate-fade-in">
+                    <div class="w-10 h-10 rounded-lg bg-brand-border flex items-center justify-center ${item.color} text-lg shrink-0">
+                        <i class="fa-solid ${item.icon}"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-white leading-tight">${item.name}</p>
+                        <span class="text-[10px] text-emerald-400 font-semibold">Ready to Claim</span>
+                    </div>
+                </div>
+            `;
+            grid.innerHTML += cardHtml;
+        }
+
+        // 5. Gaming Blog Modal Content Loader
+        const blogContent = {
+            1: {
+                title: "Best Free Fire MAX Sensitivity & Custom HUD Layout",
+                body: `
+                    <p class="mb-3">Achieving consistent headshots and fast reaction times in Free Fire MAX requires calibrating your in-game sensitivity to match your smartphone display screen refresh rate.</p>
+                    <h5 class="font-bold text-brand-gold text-sm mb-1">Recommended Sensitivity Settings:</h5>
+                    <ul class="list-disc list-inside space-y-1 text-xs mb-4 text-gray-400">
+                        <li><strong>General:</strong> 95 - 100 (For fast drag rotation)</li>
+                        <li><strong>Red Dot:</strong> 90 - 95 (Optimized for drag headshots)</li>
+                        <li><strong>2x Scope:</strong> 85 - 90</li>
+                        <li><strong>4x Scope:</strong> 80 - 85</li>
+                        <li><strong>Sniper Scope:</strong> 50 - 60 (Precision control)</li>
+                    </ul>
+                    <h5 class="font-bold text-brand-gold text-sm mb-1">Custom HUD Tip:</h5>
+                    <p>Place your right Fire button near the bottom right quarter with size set between 45% - 52%. This provides sufficient vertical drag distance for instant headshots.</p>
+                `
+            },
+            2: {
+                title: "9-Kill Solo vs Squad Rank Push Guide",
+                body: `
+                    <p class="mb-3">Rank pushing in Battle Royale requires balancing survival points with kill multipliers. Following this strategy guarantees maximum Rank Points (RP) per match.</p>
+                    <h5 class="font-bold text-brand-neonCyan text-sm mb-1">Key Steps:</h5>
+                    <ol class="list-decimal list-inside space-y-1 text-xs mb-4 text-gray-400">
+                        <li><strong>Drop Zone Selection:</strong> Land in medium-tier loot zones (e.g., Rim Nam or Sentosa) away from hot drops like Peak.</li>
+                        <li><strong>Third-Party Engagement:</strong> Wait for two enemy squads to fight, then engage when enemies are low on health.</li>
+                        <li><strong>Gloo Wall Economy:</strong> Always carry at least 4 Gloo Walls and use Mr. Waggor pet for continuous wall generation.</li>
+                    </ol>
+                    <p>Remember: Safe zone positioning in the 4th circle is crucial. Secure high ground early!</p>
+                `
+            },
+            3: {
+                title: "Top 3 Active Character Combos for Rush Players",
+                body: `
+                    <p class="mb-3">Character skills determine close-combat outcomes in Free Fire MAX. Here are the most effective combinations for aggressive rusher roles:</p>
+                    <h5 class="font-bold text-brand-neonPink text-sm mb-1">1. Speedy Rusher Build</h5>
+                    <p class="text-xs text-gray-400 mb-2"><strong>Active:</strong> Tatsuya (Rebel Rush) | <strong>Passive:</strong> Hayato + Kelly + Sonia</p>
+                    <h5 class="font-bold text-brand-neonPink text-sm mb-1">2. Sustainable HP Build</h5>
+                    <p class="text-xs text-gray-400"><strong>Active:</strong> K (Master of All) | <strong>Passive:</strong> Jota + Luqueta + Miguel</p>
+                `
+            }
+        };
+
+        function openBlogModal(id) {
+            const article = blogContent[id];
+            if (article) {
+                document.getElementById('modal-title').innerText = article.title;
+                document.getElementById('modal-body').innerHTML = article.body;
+                document.getElementById('blog-modal').classList.remove('hidden');
+            }
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
